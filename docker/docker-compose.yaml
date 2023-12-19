@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+
+  postgres:
+    image: postgres:15.4
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: features
+    ports:
+      - "5432:5432"
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 100M
+
+volumes:
+  postgres-data:

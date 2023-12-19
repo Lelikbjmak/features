@@ -1,0 +1,6 @@
+rootProject.name = 'features'
+
+include 'query-parametrization'
+
+include 'crud-lib'
+include 'core-lib'
