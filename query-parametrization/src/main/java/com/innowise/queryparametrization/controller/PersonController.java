@@ -1,40 +1,40 @@
 package com.innowise.queryparametrization.controller;
 
-import static lombok.AccessLevel.PRIVATE;
-
-import com.innowise.queryparametrization.domain.Product;
-import com.innowise.queryparametrization.dto.ProductDto;
-import com.innowise.queryparametrization.mapper.ProductMapper;
-import com.innowise.queryparametrization.service.ProductService;
 import com.innowise.queryparametrization.SpecificationService;
+import com.innowise.queryparametrization.dto.PersonDto;
+import com.innowise.queryparametrization.mapper.PersonMapper;
+import com.innowise.queryparametrization.service.PersonService;
 import com.innowise.queryparametrization.specification_context_revision.annotation.EnableDynamicSpecification;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@Slf4j
+import static lombok.AccessLevel.PRIVATE;
+
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/products")
+@RequestMapping("/api/v1/persons")
 @FieldDefaults(level = PRIVATE, makeFinal = true)
-public class ProductController {
+public class PersonController {
 
-    ProductService productService;
+    SpecificationService specificationService;
 
-    ProductMapper productMapper;
+    PersonService personService;
+
+    PersonMapper personMapper;
 
     @GetMapping
     @EnableDynamicSpecification
-    public Page<ProductDto> findAllWithFilter(
-            @RequestParam MultiValueMap<String, Object> filters, Pageable pageable) {
-        return productService.findPage(pageable).map(productMapper::toDto);
+    public Page<PersonDto> findAllWithFilter(@RequestParam MultiValueMap<String, Object> filters,
+                                             Pageable pageable) {
+//    Specification<Person> spec = specificationService.generateSpecification(filters, Person.class);
+
+        return personService.findPage(null, pageable).map(personMapper::toDto);
     }
 }

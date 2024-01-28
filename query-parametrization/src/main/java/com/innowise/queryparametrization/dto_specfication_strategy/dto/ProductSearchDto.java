@@ -1,13 +1,14 @@
-package com.innowise.queryparametrization.reveision1.dto;
+package com.innowise.queryparametrization.dto_specfication_strategy.dto;
 
 
-import static com.innowise.queryparametrization.reveision1.enumeration.SearchOperation.EQUAL;
-import static com.innowise.queryparametrization.reveision1.enumeration.SearchOperation.GREATER_THAN;
-import static com.innowise.queryparametrization.reveision1.enumeration.SearchOperation.LESS_THAN;
+import static com.innowise.queryparametrization.dto_specfication_strategy.enumeration.SearchOperation.EQUAL;
+import static com.innowise.queryparametrization.dto_specfication_strategy.enumeration.SearchOperation.GREATER_THAN;
+import static com.innowise.queryparametrization.dto_specfication_strategy.enumeration.SearchOperation.LESS_THAN;
 import static lombok.AccessLevel.PRIVATE;
 
 import com.innowise.queryparametrization.domain.Product.Fields;
-import com.innowise.queryparametrization.reveision1.annotation.Searchable;
+import com.innowise.queryparametrization.dto_specfication_strategy.annotation.Searchable;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;

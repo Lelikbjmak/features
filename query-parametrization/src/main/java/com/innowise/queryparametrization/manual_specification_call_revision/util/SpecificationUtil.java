@@ -1,4 +1,4 @@
-package com.innowise.queryparametrization.reveision1.util;
+package com.innowise.queryparametrization.manual_specification_call_revision.util;
 
 import java.util.function.Function;
 import lombok.experimental.UtilityClass;

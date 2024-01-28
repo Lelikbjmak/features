@@ -1,6 +1,6 @@
-package com.innowise.queryparametrization.reveision1.annotation;
+package com.innowise.queryparametrization.dto_specfication_strategy.annotation;
 
-import com.innowise.queryparametrization.reveision1.enumeration.SearchOperation;
+import com.innowise.queryparametrization.dto_specfication_strategy.enumeration.SearchOperation;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

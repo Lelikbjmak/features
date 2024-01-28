@@ -8,6 +8,6 @@ dependencies {
     annotationProcessor "org.mapstruct:mapstruct-processor:$mapstructVersion"
     compileOnly "org.mapstruct:mapstruct:$mapstructVersion"
 
-    implementation project(path: ':core-lib')
     implementation project(path: ':crud-lib')
+    implementation project(path: ':core-lib')
 }

@@ -4,12 +4,8 @@ import static jakarta.persistence.CascadeType.PERSIST;
 import static jakarta.persistence.GenerationType.UUID;
 import static lombok.AccessLevel.PRIVATE;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -19,6 +15,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.FieldNameConstants;
+import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -28,6 +25,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldNameConstants
+@BatchSize(size = 50)
 @FieldDefaults(level = PRIVATE)
 public class Product {
 
@@ -39,6 +37,7 @@ public class Product {
 
   String type;
 
+  @BatchSize(size = 50)
   @ManyToMany(cascade = PERSIST)
   @JoinTable(
       name = "products_categories",

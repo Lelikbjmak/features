@@ -1,4 +1,4 @@
-package com.innowise.queryparametrization.filter.operation;
+package com.innowise.queryparametrization.dto_specfication_strategy.operation;
 
 import static lombok.AccessLevel.PRIVATE;
 

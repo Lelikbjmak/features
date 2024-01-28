@@ -1,14 +1,12 @@
-package com.innowise.queryparametrization.revision2;
+package com.innowise.queryparametrization;
 
-import com.innowise.queryparametrization.filter.operation.FilterOperation;
+import com.innowise.queryparametrization.dto_specfication_strategy.operation.FilterOperation;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.From;
-import jakarta.persistence.criteria.Join;
 import jakarta.persistence.criteria.JoinType;
 import jakarta.persistence.criteria.Path;
 import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
 import jakarta.persistence.metamodel.Attribute;
 import jakarta.persistence.metamodel.ManagedType;
 import jakarta.persistence.metamodel.PluralAttribute;
@@ -20,7 +18,6 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

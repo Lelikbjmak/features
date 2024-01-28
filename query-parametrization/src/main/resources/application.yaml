@@ -32,8 +32,8 @@ server:
     relaxed-path-chars: "[,]"
     relaxed-query-chars: "[,]"
 
-app:
-  filtration:
-    operation-param-key: "[operation]"
-    value-from-param-key: "[from]"
-    value-to-param-key: "[to]"
+#app:
+#  filtration:
+#    operation-param-key: "[operation]"
+#    value-from-param-key: "[from]"
+#    value-to-param-key: "[to]"

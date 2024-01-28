@@ -1,4 +1,4 @@
-package com.innowise.queryparametrization.reveision1.enumeration;
+package com.innowise.queryparametrization.dto_specfication_strategy.enumeration;
 
 public enum SearchOperation {
 

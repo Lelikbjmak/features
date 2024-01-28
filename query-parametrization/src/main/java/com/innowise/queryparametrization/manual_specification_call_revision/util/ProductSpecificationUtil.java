@@ -1,4 +1,4 @@
-package com.innowise.queryparametrization.reveision1.util;
+package com.innowise.queryparametrization.manual_specification_call_revision.util;
 
 import com.innowise.queryparametrization.domain.Product;
 import com.innowise.queryparametrization.domain.Product.Fields;
@@ -9,7 +9,7 @@ import org.springframework.data.jpa.domain.Specification;
 @UtilityClass
 public class ProductSpecificationUtil {
 
-  public static Specification<Product> sequenceIdEquals(String type) {
+  public static Specification<Product> idEquals(String type) {
     return (r, cq, cb) -> cb.equal(r.get(Fields.type),
         type);
   }
@@ -23,4 +23,6 @@ public class ProductSpecificationUtil {
     return (r, cq, cb) -> cb.lessThan(r.get(Fields.createdAt),
         createdAt);
   }
+
+  // TODO ...
 }
