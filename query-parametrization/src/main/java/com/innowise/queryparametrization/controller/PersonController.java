@@ -1,6 +1,6 @@
 package com.innowise.queryparametrization.controller;
 
-import com.innowise.queryparametrization.SpecificationService;
+import com.innowise.queryparametrization.specification.SpecificationService;
 import com.innowise.queryparametrization.dto.PersonDto;
 import com.innowise.queryparametrization.mapper.PersonMapper;
 import com.innowise.queryparametrization.service.PersonService;
