@@ -2,13 +2,31 @@
 
 pipeline {
     agent any
-
+    environment {
+        DOCKER_IMAGE = 'query-parametrization:latest'
+    }
     stages {
-        stage('Hello World') {
-            steps {
-
-                echo 'Hello, Jenkins!'
+        stage("Build JAR") {
+            script {
+                sh 'cd ../..'
+                sh './gradlew clean build'
             }
         }
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    sh 'cd ../..'
+                    sh "docker build -t ${DOCKER_IMAGE} ."
+                }
+            }
+        }
+//        stage('Push Docker Image') {
+//            steps {
+//                script {
+//
+//                    sh "docker push ${DOCKER_IMAGE}"
+//                }
+//            }
+//        }
     }
 }
