@@ -16,8 +16,10 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                script {
-                    sh "docker build -t ${DOCKER_IMAGE} ."
+                dir('query-parametrization') {
+                    script {
+                        sh "docker build -t ${DOCKER_IMAGE} ."
+                    }
                 }
             }
         }
