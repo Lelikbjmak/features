@@ -19,6 +19,7 @@ pipeline {
             steps {
                 script {
                     sh 'cd query-parametrization'
+                    sh 'pwd'
                     sh "docker build -t ${DOCKER_IMAGE} ."
                 }
             }
