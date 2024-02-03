@@ -7,9 +7,11 @@ pipeline {
     }
     stages {
         stage("Build JAR") {
-            script {
-                sh 'cd ../..'
-                sh './gradlew clean build'
+            steps {
+                script {
+                    sh 'cd ../..'
+                    sh './gradlew clean build'
+                }
             }
         }
         stage('Build Docker Image') {
