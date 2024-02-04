@@ -4,6 +4,8 @@ pipeline {
     agent any
     environment {
         DOCKER_IMAGE = 'query-parametrization:latest'
+        REGISTRY_URL = ' https://hub.docker.com/'
+        REGISTRY_CREDENTIALS_ID = 'a5d56d32-85ed-4886-a825-c2d13f5bd7c4'
     }
     stages {
         stage("Build JAR") {
@@ -14,7 +16,7 @@ pipeline {
                 }
             }
         }
-        stage('Build Docker Image') {
+        stage('Build docker image') {
             steps {
                 dir('query-parametrization') {
                     script {
@@ -22,6 +24,21 @@ pipeline {
                     }
                 }
             }
+        }
+        stage('Push docker image to registry') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: $ { REGISTRY_CREDENTIALS_ID }, passwordVariable: 'REGISTRY_PASS', usernameVariable: 'REGISTRY_USER')]) {
+                    sh "echo '$REGISTRY_PASS' | docker login ${REGISTRY_URL} --username $REGISTRY_USER --password-stdin"
+                }
+                script {
+                    sh "docker push ${DOCKER_IMAGE}"
+                }
+            }
+        }
+    }
+    post {
+        always {
+            sh "docker logout ${REGISTRY_URL}"
         }
     }
 }
