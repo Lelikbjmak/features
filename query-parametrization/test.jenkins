@@ -28,7 +28,7 @@ pipeline {
         stage('Login to Docker registry') {
             steps {
                 withCredentials([usernamePassword(credentialsId: "${REGISTRY_CREDENTIALS_ID}", passwordVariable: 'REGISTRY_PASS', usernameVariable: 'REGISTRY_USER')]) {
-                    sh "docker login --username $REGISTRY_USER --password $REGISTRY_PASS"
+                    sh "docker login --username ${REGISTRY_USER} --password ${REGISTRY_PASS}"
                 }
             }
         }
