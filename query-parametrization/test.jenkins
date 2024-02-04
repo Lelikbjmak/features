@@ -25,18 +25,14 @@ pipeline {
                 }
             }
         }
-        stage('Login to Docker registry') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: "${REGISTRY_CREDENTIALS_ID}", passwordVariable: 'REGISTRY_PASS', usernameVariable: 'REGISTRY_USER')]) {
-                    sh "echo '$REGISTRY_PASS' | docker login --username $REGISTRY_USER --password-stdin"
-                }
-            }
-        }
         stage('Push docker image to registry') {
             steps {
-                script {
-                    sh "docker tag ${DOCKER_IMAGE} ${REGISTRY_USER}/${DOCKER_IMAGE}"
-                    sh "docker push ${REGISTRY_USER}/${DOCKER_IMAGE}"
+                withCredentials([usernamePassword(credentialsId: "${REGISTRY_CREDENTIALS_ID}", passwordVariable: 'REGISTRY_PASS', usernameVariable: 'REGISTRY_USER')]) {
+                    script {
+                        sh "echo '$REGISTRY_PASS' | docker login --username $REGISTRY_USER --password-stdin"
+                        sh "docker tag ${DOCKER_IMAGE} ${REGISTRY_USER}/${DOCKER_IMAGE}"
+                        sh "docker push ${REGISTRY_USER}/${DOCKER_IMAGE}"
+                    }
                 }
             }
         }
