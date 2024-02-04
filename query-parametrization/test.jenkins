@@ -31,7 +31,8 @@ pipeline {
                     sh "echo '$REGISTRY_PASS' | docker login ${REGISTRY_URL} --username $REGISTRY_USER --password-stdin"
                 }
                 script {
-                    sh "docker push ${DOCKER_IMAGE}"
+                    sh "docker tag ${DOCKER_IMAGE} ${REGISTRY_USER}/${DOCKER_IMAGE}"
+                    sh "docker push ${REGISTRY_USER}/${DOCKER_IMAGE}"
                 }
             }
         }
