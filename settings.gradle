@@ -2,5 +2,5 @@ rootProject.name = 'features'
 
 include 'query-parametrization'
 
-include 'crud-lib'
-include 'core-lib'
+include ':starters:innowise-data-starter'
+include ':core-lib'

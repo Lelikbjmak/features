@@ -1,0 +1,4 @@
+rootProject.name = 'starters'
+
+include 'innowise-data-starter'
+include 'innowise-dynamic-specification-starter'

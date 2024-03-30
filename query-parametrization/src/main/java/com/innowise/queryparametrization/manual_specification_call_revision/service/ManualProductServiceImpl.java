@@ -1,6 +1,6 @@
 package com.innowise.queryparametrization.manual_specification_call_revision.service;
 
-import com.innowise.crudlib.service.AbstractGenericCrudService;
+import com.innowise.datastarter.service.AbstractGenericCrudService;
 import com.innowise.queryparametrization.domain.Product;
 import com.innowise.queryparametrization.manual_specification_call_revision.dto.ProductFilterDto;
 import com.innowise.queryparametrization.manual_specification_call_revision.util.ProductSpecificationUtil;

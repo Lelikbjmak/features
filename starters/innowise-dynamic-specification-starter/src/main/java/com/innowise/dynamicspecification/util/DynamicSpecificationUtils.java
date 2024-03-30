@@ -1,20 +1,20 @@
-package com.innowise.queryparametrization.specification;
+package com.innowise.dynamicspecification.util;
 
-import com.innowise.queryparametrization.dto_specfication_strategy.operation.FilterOperation;
+import com.innowise.dynamicspecification.specification.DynamicSpecificationOperation;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.Path;
 import jakarta.persistence.criteria.Predicate;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
-public class SpecificationUtil {
+public class DynamicSpecificationUtils {
 
   @SuppressWarnings({"unchecked", "rawtypes"})
   public static <T> Predicate build(
       CriteriaBuilder criteriaBuilder, Path<T> completeAttributePath,
-      FilterOperation filterOperation, Object applicableFilterableAttributeValue) {
-    if (filterOperation == FilterOperation.GREATER_THAN
-        || filterOperation == FilterOperation.LESS_THAN) {
+      DynamicSpecificationOperation filterOperation, Object applicableFilterableAttributeValue) {
+    if (filterOperation == DynamicSpecificationOperation.GREATER_THAN
+        || filterOperation == DynamicSpecificationOperation.LESS_THAN) {
       if (Comparable.class.isAssignableFrom(completeAttributePath.getJavaType())) {
         @SuppressWarnings({"unchecked"})
         Path<Comparable> filtrationAttributePath = (Path<Comparable>) completeAttributePath;

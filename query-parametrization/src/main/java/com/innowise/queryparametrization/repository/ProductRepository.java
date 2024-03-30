@@ -2,7 +2,7 @@ package com.innowise.queryparametrization.repository;
 
 
 import com.innowise.queryparametrization.domain.Product;
-import com.innowise.crudlib.repository.GenericCrudRepository;
+import com.innowise.datastarter.repository.GenericCrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository

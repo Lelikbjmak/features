@@ -1,7 +1,7 @@
-package com.innowise.queryparametrization.specification_context_revision.aspect;
+package com.innowise.dynamicspecification.aspect;
 
-import com.innowise.queryparametrization.specification.SpecificationService;
-import com.innowise.queryparametrization.specification_context_revision.SpecificationContext;
+import com.innowise.dynamicspecification.specification.DynamicSpecificationContext;
+import com.innowise.dynamicspecification.service.DynamicSpecificationBuilder;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -17,12 +17,12 @@ import org.springframework.util.MultiValueMap;
 public class DynamicSpecificationContextHandlerAspect {
 
   @Autowired
-  private SpecificationContext specificationContext;
+  private DynamicSpecificationContext specificationContext;
 
   @Autowired
-  private SpecificationService specificationService;
+  private DynamicSpecificationBuilder specificationService;
 
-  @Pointcut("@annotation(com.innowise.queryparametrization.specification_context_revision.annotation.EnableDynamicSpecification)")
+  @Pointcut("@annotation(com.innowise.dynamicspecification.annotation.GeneratingDynamicSpecification)")
   public void filtrationMethodsPointcut() {
 
   }
@@ -31,7 +31,7 @@ public class DynamicSpecificationContextHandlerAspect {
   public void beforeRequest(JoinPoint joinPoint) {
     MultiValueMap<String, Object> filters = getFiltersFromArguments(joinPoint.getArgs());
 
-    Specification<?> specification = specificationService.generateSpecification(filters);
+    Specification<?> specification = specificationService.build(filters);
     specificationContext.setSpecification(specification);
   }
 
