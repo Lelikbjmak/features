@@ -3,4 +3,5 @@ rootProject.name = 'features'
 include 'query-parametrization'
 
 include ':starters:innowise-data-starter'
-include ':core-lib'
+include ':starters:innowise-security-starter'
+include ':starters:innowise-dynamic-specification-starter'

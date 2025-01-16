@@ -33,8 +33,7 @@ public class PersonController {
     @EnableDynamicSpecification
     public Page<PersonDto> findAllWithFilter(@RequestParam MultiValueMap<String, Object> filters,
                                              Pageable pageable) {
-//    Specification<Person> spec = specificationService.generateSpecification(filters, Person.class);
-
-        return personService.findPage(null, pageable).map(personMapper::toDto);
+//        return personService.findPage(null, pageable).map(personMapper::toDto);
+        return null;
     }
 }

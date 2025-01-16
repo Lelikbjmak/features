@@ -32,6 +32,6 @@ public class ProductController {
     @EnableDynamicSpecification
     public Page<ProductDto> findAllWithFilter(
             @RequestParam MultiValueMap<String, Object> filters, Pageable pageable) {
-        return productService.findPage(pageable).map(productMapper::toDto);
+        return null;
     }
 }

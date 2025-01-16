@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WebSocket Test</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+</head>
+<body>
+<h1>WebSocket Test</h1>
+<form id="messageForm">
+  <label for="message">Message:</label>
+  <input type="text" id="message" name="message">
+  <button type="submit">Send</button>
+</form>
+<div id="responses"></div>
+
+<script>
+  // Change this to the correct WebSocket URL
+  var socket = new SockJS('http://localhost:8080/portfolio');
+  var stompClient = Stomp.over(socket);
+
+  stompClient.connect({}, function (frame) {
+    console.log('Connected: ' + frame);
+
+    stompClient.subscribe('/topic/portfolio', function (response) {
+      showMessage(response.body);
+    });
+  });
+
+  document.getElementById('messageForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+    var message = document.getElementById('message').value;
+    stompClient.send("/app/updatePortfolio", {}, message);
+  });
+
+  function showMessage(message) {
+    var responseDiv = document.getElementById('responses');
+    var p = document.createElement('p');
+    p.appendChild(document.createTextNode(message));
+    responseDiv.appendChild(p);
+  }
+</script>
+</body>
+</html>

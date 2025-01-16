@@ -18,7 +18,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @Configuration
 @FieldDefaults(level = PRIVATE, makeFinal = true)
-@ConditionalOnBean(org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration.class)
+//@ConditionalOnBean(org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration.class)
 public class RedisAutoConfiguration {
 
   @Bean

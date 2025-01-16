@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.innowise.innowisesecuritystarter.security.jwt.config.JwtSecurityAutoConfiguration,\
+  com.innowise.innowisesecuritystarter.security.inmemory.config.InMemorySecurityAutoConfiguration

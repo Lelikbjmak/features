@@ -1,0 +1,85 @@
+scalar LocalTime
+
+type Mutation {
+    saveUser(user: UserInput): User
+    editUser(user: UserInput): User
+    deleteUser(id: String): String
+    saveRole(role: RoleInput): Boolean
+
+    saveProduct(product: ProductInput): Product
+}
+
+type Query {
+    listAllUsers: [User]
+    findUserById(id: String): User
+
+    # products
+    findProductsByCategory(category: String): [Product]
+}
+
+
+input ProductInput {
+    id: String
+    name: String!
+    description: String!
+    category: String!
+    productDetails: ProductDetailsInput!
+    properties: [PropertyInput!]!
+}
+
+input ProductDetailsInput {
+    description: String
+    sizeX: Int
+    sizeY: Int
+}
+
+input PropertyInput {
+    name: String
+    description: String
+}
+
+type ProductDetails {
+    description: String
+    sizeX: Int
+    sizeY: Int
+}
+
+type Property {
+    name: String
+    description: String
+}
+
+type Product {
+    id: String
+    name: String
+    description: String
+    category: String
+    productDetails: ProductDetails
+    properties: [Property]
+}
+
+type User {
+    id: String
+    username: String
+    email: String
+    roles: [Role]
+    registrationDate: LocalTime
+    lastTimeUpdated: LocalTime
+}
+
+type Role {
+    id: ID
+    name: String
+}
+
+input UserInput {
+    id: String
+    username: String
+    email: String
+    roles: [RoleInput]
+}
+
+input RoleInput {
+    id: ID
+    name: String
+}
